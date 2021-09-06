@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack-dev-server --progress",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,8 +21,10 @@
     "mini-css-extract-plugin": "^2.2.2",
     "node-sass": "^6.0.1",
     "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.52.0",
-    "webpack-cli": "^4.8.0"
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0"
   }
 }

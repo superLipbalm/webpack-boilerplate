@@ -68,4 +68,8 @@ module.exports = {
       ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
       : []),
   ],
+  devServer: {
+    historyApiFallback: true, // 404 발생시 index.html로 리다이렉트 SPA 개발시 사용
+    hot: true,
+  },
 };
