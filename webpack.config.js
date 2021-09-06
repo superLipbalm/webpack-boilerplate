@@ -1,8 +1,8 @@
 const path = require('path');
-const webpack = require('webpack');
 const childProcess = require('child_process');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { DefinePlugin } = require('webpack');
+const { DefinePlugin, BannerPlugin } = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -26,7 +26,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.BannerPlugin({
+    new BannerPlugin({
       banner: `
         Build Date : ${new Date().toLocaleString()}
         Author : ${childProcess.execSync('git config user.name')}
@@ -46,5 +46,6 @@ module.exports = {
             }
           : false,
     }),
+    new CleanWebpackPlugin(),
   ],
 };
