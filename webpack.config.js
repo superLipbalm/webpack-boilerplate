@@ -2,7 +2,6 @@ const path = require('path');
 const childProcess = require('child_process');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin, BannerPlugin } = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
@@ -15,6 +14,7 @@ module.exports = {
   output: {
     path: path.resolve('./dist'),
     filename: '[name].js',
+    clean: true,
   },
   module: {
     rules: [
@@ -63,7 +63,6 @@ module.exports = {
           : false,
       hash: true,
     }),
-    new CleanWebpackPlugin(),
     ...(process.env.NODE_ENV === 'production'
       ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
       : []),
@@ -72,4 +71,5 @@ module.exports = {
     historyApiFallback: true, // 404 발생시 index.html로 리다이렉트 SPA 개발시 사용
     hot: true,
   },
+  devtool: 'source-map',
 };
